@@ -44,3 +44,14 @@ num = 6
 
 vidas = vidas-1
 
+vidas = 0 
+
+#Subir cambios
+# git add .
+# git commit -m "agregue que vida = 0"
+# git push origin dev/Ana
+
+#Bajar cambios
+#git pull origin main
+
+peces = 4
