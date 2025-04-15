@@ -9,6 +9,13 @@
 #si se terminan las vidas y no se adivino la palabra este pierde
 #si tiene vidas, mientras que adivino la palabra este gana
 
+def saludo():
+    print("¡Bienvenido a uno de los mejores juegos en solitario!")
+    print("Desestrésate o estrésate adivinando la palabra por tu cuenta y sin ayuda de nadie.")
+    print("Sin más preámbulos… ¡COMENCEMOS CON EL JUEGO!")
+
+saludo()
+
 adivinar_palabra = ["Acuario","peces","tiburon","sirenas","orcas"]
 vidas = 6
 
