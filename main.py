@@ -9,6 +9,7 @@
 #si se terminan las vidas y no se adivino la palabra este pierde
 #si tiene vidas, mientras que adivino la palabra este gana
 
+#Saludo
 def saludo():
     print("¡Bienvenido a uno de los mejores juegos en solitario!")
     print("Desestrésate o estrésate adivinando la palabra por tu cuenta y sin ayuda de nadie.")
@@ -16,42 +17,37 @@ def saludo():
 
 saludo()
 
+#banco de palabras
 adivinar_palabra = ["Acuario","peces","tiburon","sirenas","orcas"]
+
+#definicion de las vidas del usuario
 vidas = 6
 
+#Seleccion de la palabra escondida
 palabra = adivinar_palabra[4]
 #print(palabra)
 
+#cuenta las letras
 cantidad_letras = len(palabra)
 
+#imprime el espacio de la palabra
 print("_"*cantidad_letras)
 
-letra = input("Ingrese una letra: ")
-print(letra)
 
+#crear una funcion que una vez que el usuario haya adivinado todas las letras haga terminar el bucle
 
-#orcas -> palabra
+#verifica que la condicion de vidas este en el rango de 0-6
+while(vidas <= 6 and vidas > 0):
+    #Usuario coloca una letra y se imprime
+    letra = input("Ingrese una letra: ")
 
-#s -> letra
+    #validacion si la letra pertenece a la palabra, se le quite -1 o quede igual
+    if letra in palabra:
+        print("la letra es correcta")
+    else:
+        print("la letra es incorrecta")
+        vidas = vidas-1
 
-is_in_palabra = letra in palabra
-
-if letra in palabra:
-    print("la letra es correcta")
-else:
-    print("la letra es incorrecta")
-    vidas = vidas-1
-
-
-
-
-num = 6
-
-
-
-vidas = vidas-1
-
-vidas = 0 
 
 #Subir cambios
 # git add .
@@ -59,6 +55,9 @@ vidas = 0
 # git push origin dev/Ana
 
 #Bajar cambios
-#git pull origin main
+#git pull origin mai
 
-peces = 4
+
+
+
+
