@@ -1,0 +1,1 @@
+# funciones de lógica del juego: progreso, errores, etc.

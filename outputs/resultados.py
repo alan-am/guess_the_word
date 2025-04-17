@@ -1,0 +1,1 @@
+# funcion de ganador y perdedor
