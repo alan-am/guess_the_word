@@ -1,3 +1,6 @@
+from core.config import seleccionar_categoria
+
+
 #necesitamos palabras para adivinar
 #necesitamos un grafico del muneco  ###
 #mensaje de bienvenida ###
@@ -8,6 +11,18 @@
 #el usuario tiene 6 vidas
 #si se terminan las vidas y no se adivino la palabra este pierde
 #si tiene vidas, mientras que adivino la palabra este gana
+
+#Declarar diccionario de config
+configs = {
+    "idioma": "no-value",
+    "categoria": "no-value",
+    "dificultad": "no-value"
+}
+
+configs = seleccionar_categoria(configs)
+
+print(configs)
+
 
 #Saludo
 def saludo():
