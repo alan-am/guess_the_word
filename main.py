@@ -70,6 +70,7 @@ while(vidas <= 6 and vidas > 0):
 # git push origin dev/Ana
 
 #Bajar cambios
+#git add .
 #git pull origin mai
 
 
