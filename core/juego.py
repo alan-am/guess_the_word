@@ -1,1 +1,69 @@
 # funciones de lógica del juego: progreso, errores, etc.
+
+def indices_letra(word:str, letter):
+    '''Recibe una letra, una palabra y 
+    devuelve una lista de indices en donde se encuentra la letra(puede estar vacia)'''
+    indices_encontrados = []
+
+    if normalizar_letra(letter) in word :
+        for i in range(0, len(word)):
+            word_letter = word[i]
+            if word_letter == letter:
+                indices_encontrados.append(i)
+
+    return indices_encontrados
+
+
+def normalizar_letra(letter):
+    '''Recibe una letra, la convierte a minúscula, elimina tildes y espacios,
+    ojo validar previamente con regex que sea letras del abecedario'''
+
+    letter_normalized = letter.lower().strip()
+    vocales_con_tildes = ["á", "é", "í", "ó", "ú"]
+    if (letter_normalized in vocales_con_tildes):
+        if letter_normalized == "á":
+            letter_normalized = "a"
+
+        elif letter_normalized == "é":
+            letter_normalized = "e"
+
+        elif letter_normalized == "í":
+            letter_normalized = "i"
+
+        elif letter_normalized == "ó":
+            letter_normalized = "o"
+
+        elif letter_normalized == "ú":
+            letter_normalized = "u"
+    print(letter_normalized)
+    return letter_normalized
+
+def revelar_palabra(word_space, word, letter):
+    '''Actualiza el espacio de la palabra con las letras que se vayan adivinando'''
+    indices = indices_letra(word, letter)
+    for indice in indices:
+        word_space[indice] = letter
+    return word_space
+
+
+
+
+# TESTS indices_letra, normalizar_letra
+# palabra= "perro"
+letra = None
+# while letra != "salir":
+
+#     letra = input("> Escriba una letra de la A-Z: ")
+#     print(indices_letra(palabra, letra))
+
+
+#TEST revelar_palabra
+palabra = "perro"
+word_space = ["_", "_", "_", "_", "_"]
+
+while letra != "salir":
+
+    letra = input("> Escriba una letra de la A-Z: ")
+    word_space = revelar_palabra(word_space, palabra, letra)
+    print("".join(word_space))
+
