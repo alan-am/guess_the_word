@@ -1,3 +1,6 @@
+from core.config import seleccionar_categoria
+
+
 #necesitamos palabras para adivinar
 #necesitamos un grafico del muneco  ###
 #mensaje de bienvenida ###
@@ -8,6 +11,28 @@
 #el usuario tiene 6 vidas
 #si se terminan las vidas y no se adivino la palabra este pierde
 #si tiene vidas, mientras que adivino la palabra este gana
+
+#Declarar diccionario de config del juego
+configs = {
+    "idioma": "no-value",
+    "categoria": "no-value",
+    "dificultad": "no-value"
+}
+
+#Declarar diccionario para las variables del juego(vida, espacio_palabra, letra, palabra, letras_jugadas, puntaje)
+variables = {
+    "vida": 0,
+    "espacio_palabra": [],
+    "letra": "no-value",
+    "palabra": "no-value",
+    "letras_jugadas": [],
+    "puntaje": 0
+}
+
+configs = seleccionar_categoria(configs)
+
+print(configs)
+
 
 #Saludo
 def saludo():
@@ -20,18 +45,9 @@ saludo()
 #banco de palabras
 adivinar_palabra = ["Acuario","peces","tiburon","sirenas","orcas"]
 
-#definicion de las vidas del usuario
-vidas = 6
-
 #Seleccion de la palabra escondida
 palabra = adivinar_palabra[4]
 #print(palabra)
-
-#cuenta las letras
-cantidad_letras = len(palabra)
-
-#imprime el espacio de la palabra
-print("_"*cantidad_letras)
 
 
 #crear una funcion que una vez que el usuario haya adivinado todas las letras haga terminar el bucle
@@ -55,6 +71,7 @@ while(vidas <= 6 and vidas > 0):
 # git push origin dev/Ana
 
 #Bajar cambios
+#git add .
 #git pull origin mai
 
 
