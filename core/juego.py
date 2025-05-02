@@ -1,14 +1,14 @@
 # funciones de lógica del juego: progreso, errores, etc.
 
-def indices_letra(word:str, letter):
+def indices_letra(word, letter):
     '''Recibe una letra, una palabra y 
     devuelve una lista de indices en donde se encuentra la letra(puede estar vacia)'''
     indices_encontrados = []
-
-    if normalizar_letra(letter) in word :
+    letter_normalized = normalizar_letra(letter)
+    if letter_normalized in word :
         for i in range(0, len(word)):
             word_letter = word[i]
-            if word_letter == letter:
+            if word_letter == letter_normalized:
                 indices_encontrados.append(i)
 
     return indices_encontrados
