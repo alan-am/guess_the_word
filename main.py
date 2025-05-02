@@ -1,4 +1,6 @@
-from core.config import seleccionar_categoria
+from core.config import selec_category
+from outputs.bienvenida import saludo
+from core.juego import assign_hide_word
 
 
 #necesitamos palabras para adivinar
@@ -29,40 +31,22 @@ variables = {
     "puntaje": 0
 }
 
-configs = seleccionar_categoria(configs)
+#El usuario selecciona la categoria
+print("Seleccione la categoria para inciar con el juego")
+selec_category(configs)
 
-print(configs)
+#Seleccionar palabras escondida de ESA categoria
+assign_hide_word(configs["categoria"], variables)
 
+#
 
-#Saludo
-def saludo():
-    print("¡Bienvenido a uno de los mejores juegos en solitario!")
-    print("Desestrésate o estrésate adivinando la palabra por tu cuenta y sin ayuda de nadie.")
-    print("Sin más preámbulos… ¡COMENCEMOS CON EL JUEGO!")
-
-saludo()
-
-#banco de palabras
-adivinar_palabra = ["Acuario","peces","tiburon","sirenas","orcas"]
-
-#Seleccion de la palabra escondida
-palabra = adivinar_palabra[4]
-#print(palabra)
-
-
-#crear una funcion que una vez que el usuario haya adivinado todas las letras haga terminar el bucle
 
 #verifica que la condicion de vidas este en el rango de 0-6
-while(vidas <= 6 and vidas > 0):
-    #Usuario coloca una letra y se imprime
-    letra = input("Ingrese una letra: ")
+# while(vidas <= 6 and vidas > 0):
+#      vidas = vidas-1
 
-    #validacion si la letra pertenece a la palabra, se le quite -1 o quede igual
-    if letra in palabra:
-        print("la letra es correcta")
-    else:
-        print("la letra es incorrecta")
-        vidas = vidas-1
+
+
 
 
 #Subir cambios
@@ -72,7 +56,7 @@ while(vidas <= 6 and vidas > 0):
 
 #Bajar cambios
 #git add .
-#git pull origin mai
+#git pull origin main
 
 
 

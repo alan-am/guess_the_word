@@ -1,3 +1,4 @@
+import random
 # funciones de lógica del juego: progreso, errores, etc.
 
 def indices_letra(word, letter):
@@ -38,6 +39,7 @@ def normalizar_letra(letter):
     print(letter_normalized)
     return letter_normalized
 
+
 def revelar_palabra(word_space, word, letter):
     '''Actualiza el espacio de la palabra con las letras que se vayan adivinando'''
     indices = indices_letra(word, letter)
@@ -46,23 +48,50 @@ def revelar_palabra(word_space, word, letter):
     return word_space
 
 
+def get_words_category(category):
+    '''Lee el archivo de la categoria provista y retorna una lista de las palabras
+    del archivo'''
+    list = []
+    with open("banco_palabras/"+category,"r") as file:
+        for word in file:
+            list.append(word.strip())
+    
+    return list
 
-# TESTS indices_letra, normalizar_letra
+
+def assign_hide_word(category, dic_variables):
+    words = get_words_category(category)
+    '''Realiza un sorteo al azar , selecciona una palabra y la asigna al diccionario
+    correspondiente'''
+    random_num = random.randint(0, len(words) - 1)
+    selected_word = words[random_num]
+    dic_variables["palabra"] = selected_word
+    
+
+
+
+# TESTS 
+
+# indices_letra, normalizar_letra
 # palabra= "perro"
-letra = None
+# letra = None
 # while letra != "salir":
 
 #     letra = input("> Escriba una letra de la A-Z: ")
 #     print(indices_letra(palabra, letra))
 
 
-#TEST revelar_palabra
-palabra = "perro"
-word_space = ["_", "_", "_", "_", "_"]
+#revelar_palabra
+# palabra = "perro"
+# word_space = ["_", "_", "_", "_", "_"]
 
-while letra != "salir":
+# while letra != "salir":
 
-    letra = input("> Escriba una letra de la A-Z: ")
-    word_space = revelar_palabra(word_space, palabra, letra)
-    print(" ".join(word_space))
+#     letra = input("> Escriba una letra de la A-Z: ")
+#     word_space = revelar_palabra(word_space, palabra, letra)
+#     print("".join(word_space))
 
+
+
+#get_wprds_category
+#print(get_words_category("banco_palabras/animales.txt"))

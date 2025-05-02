@@ -1,8 +1,0 @@
-las palabras en el .txt deben ir sin tilde y en minusculas todo
-
-el espacio de la palabra debe ir en forma de lista para mayor facilidad
-
-crear un diccionario para guardar el status del usuario-juego? (vidas, espacio_palabra, palabra,
-letras jugadas, ultima letra, puntaje)
-
-ojo con la u de pinguino
