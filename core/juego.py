@@ -36,7 +36,6 @@ def normalizar_letra(letter):
 
         elif letter_normalized == "ú":
             letter_normalized = "u"
-    print(letter_normalized)
     return letter_normalized
 
 
@@ -55,14 +54,15 @@ def get_words_category(category):
     with open("banco_palabras/"+category,"r") as file:
         for word in file:
             list.append(word.strip())
-    
+        
     return list
 
 
 def assign_hide_word(category, dic_variables):
-    words = get_words_category(category)
     '''Realiza un sorteo al azar , selecciona una palabra y la asigna al diccionario
     correspondiente'''
+    words = get_words_category(category)
+    random.shuffle(words)
     random_num = random.randint(0, len(words) - 1)
     selected_word = words[random_num]
     dic_variables["palabra"] = selected_word

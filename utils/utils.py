@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 def validator_of_selection(min, max):
     '''Valida la seleccion del usuario que este en el rango correcto'''
@@ -20,6 +21,8 @@ def ascii_loader(vidas):
              print(file.read())
 
 
+def limpiar_consola():
+    os.system("cls" if os.name == "nt" else "clear")
 
 #TESTS
 

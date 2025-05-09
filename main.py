@@ -1,6 +1,7 @@
 from core.config import selec_category
 from outputs.bienvenida import saludo
-from core.juego import assign_hide_word, revelar_palabra, create_word_space
+from core.juego import assign_hide_word, revelar_palabra, create_word_space, indices_letra
+from utils.utils import ascii_loader, limpiar_consola
 
 
 #necesitamos palabras para adivinar
@@ -23,7 +24,7 @@ configs = {
 
 #Declarar diccionario para las variables del juego(vida, espacio_palabra, letra, palabra, letras_jugadas, puntaje)
 variables = {
-    "vida": 0,
+    "vida": 6,
     "espacio_palabra": [],
     "letra": "no-value",
     "palabra": "no-value",
@@ -45,13 +46,18 @@ create_word_space(variables)
 print("Si ya no desea jugar escriba (salir)")
 
 letra = ""
-while letra != "salir":
+while letra != "salir" and variables["vida"] != 0 and "_" in variables["espacio_palabra"] : 
   letra = input("Ingrese una letra: ")
+  limpiar_consola()
+  
   variables["espacio_palabra"] = revelar_palabra(variables["espacio_palabra"], variables["palabra"], letra)
   print(" ".join(variables["espacio_palabra"]))
+  if len(indices_letra(variables["palabra"], letra)) == 0: # si el usuario se equivoca
+    variables["vida"] -= 1
 
-  
-print("Ganaste el juego")
+  print(f"\n \n Vidas restantes: {variables["vida"]}")
+  ascii_loader(variables["vida"])
+
 
 
 
