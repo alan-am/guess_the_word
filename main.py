@@ -1,6 +1,6 @@
 from core.config import selec_category
 from outputs.bienvenida import saludo
-from core.juego import assign_hide_word
+from core.juego import assign_hide_word, revelar_palabra, create_word_space
 
 
 #necesitamos palabras para adivinar
@@ -38,12 +38,20 @@ selec_category(configs)
 #Seleccionar palabras escondida de ESA categoria
 assign_hide_word(configs["categoria"], variables)
 
-#
+#1) Generar el espacio de la palabra selecionada, debe ser una lista. ejem: ["_", "_", "_"]
+create_word_space(variables)
 
+#Test juego
+print("Si ya no desea jugar escriba (salir)")
 
-#verifica que la condicion de vidas este en el rango de 0-6
-# while(vidas <= 6 and vidas > 0):
-#      vidas = vidas-1
+letra = ""
+while letra != "salir":
+  letra = input("Ingrese una letra: ")
+  variables["espacio_palabra"] = revelar_palabra(variables["espacio_palabra"], variables["palabra"], letra)
+  print(" ".join(variables["espacio_palabra"]))
+
+  
+print("Ganaste el juego")
 
 
 

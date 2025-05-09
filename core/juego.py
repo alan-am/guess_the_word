@@ -66,6 +66,12 @@ def assign_hide_word(category, dic_variables):
     random_num = random.randint(0, len(words) - 1)
     selected_word = words[random_num]
     dic_variables["palabra"] = selected_word
+
+def create_word_space(variables):
+    '''Cuenta las letras para generar el espacio de la palabra'''
+    palabra = variables["palabra"]
+    letras = len(palabra)
+    variables["espacio_palabra"] = ["_"] * letras
     
 
 
