@@ -1,3 +1,5 @@
+from pathlib import Path
+
 def validator_of_selection(min, max):
     '''Valida la seleccion del usuario que este en el rango correcto'''
     selec = input('> ')
@@ -7,9 +9,15 @@ def validator_of_selection(min, max):
         
     return int(selec) 
 
-def ascii_loader():
-    ''''''
+def ascii_loader(vidas):
+    '''imprime un ascii del ahorcado , dependiendo de cuantas vidas tenga el usuario'''
+    rute = Path("ascii")/f"{vidas}.txt"
 
+    if  not rute.exists():
+        print(f"Archivo: {rute} no encontrado.")
+    else:
+        with open(rute,"r") as file:  
+             print(file.read())
 
 
 
@@ -18,4 +26,7 @@ def ascii_loader():
 #validator_of_selection
 # print("Ingrese un numero del 1 al 6")
 # validator_of_selection(1, 6)
+
+
+#ascii_loader(7)
 
