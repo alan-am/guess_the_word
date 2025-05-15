@@ -1,3 +1,4 @@
+import random
 # funciones de lógica del juego: progreso, errores, etc.
 
 def indices_letra(word, letter):
@@ -35,7 +36,6 @@ def normalizar_letra(letter):
 
         elif letter_normalized == "ú":
             letter_normalized = "u"
-    print(letter_normalized)
     return letter_normalized
 
 
@@ -49,14 +49,30 @@ def revelar_palabra(word_space, word, letter):
 
 def get_words_category(category):
     '''Lee el archivo de la categoria provista y retorna una lista de las palabras
-    leidas'''
+    del archivo'''
+    list = []
+    with open("banco_palabras/"+category,"r") as file:
+        for word in file:
+            list.append(word.strip())
+        
+    return list
 
 
-def assign_hide_word(words, dic):
+def assign_hide_word(category, dic_variables):
     '''Realiza un sorteo al azar , selecciona una palabra y la asigna al diccionario
     correspondiente'''
+    words = get_words_category(category)
+    random.shuffle(words)
+    random_num = random.randint(0, len(words) - 1)
+    selected_word = words[random_num]
+    dic_variables["palabra"] = selected_word
 
-
+def create_word_space(variables):
+    '''Cuenta las letras para generar el espacio de la palabra'''
+    palabra = variables["palabra"]
+    letras = len(palabra)
+    variables["espacio_palabra"] = ["_"] * letras
+    
 
 
 
@@ -81,3 +97,7 @@ def assign_hide_word(words, dic):
 #     word_space = revelar_palabra(word_space, palabra, letra)
 #     print("".join(word_space))
 
+
+
+#get_wprds_category
+#print(get_words_category("banco_palabras/animales.txt"))

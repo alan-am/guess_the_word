@@ -1,4 +1,8 @@
-from core import config
+from core.config import selec_category
+from outputs.bienvenida import saludo
+from core.juego import assign_hide_word, revelar_palabra, create_word_space, indices_letra
+from utils.utils import ascii_loader, limpiar_consola
+
 
 #necesitamos palabras para adivinar
 #necesitamos un grafico del muneco  ###
@@ -20,7 +24,7 @@ configs = {
 
 #Declarar diccionario para las variables del juego(vida, espacio_palabra, letra, palabra, letras_jugadas, puntaje)
 variables = {
-    "vida": 0,
+    "vida": 6,
     "espacio_palabra": [],
     "letra": "no-value",
     "palabra": "no-value",
@@ -28,39 +32,35 @@ variables = {
     "puntaje": 0
 }
 
-configs = seleccionar_categoria(configs)
+#El usuario selecciona la categoria
+print("Seleccione la categoria para inciar con el juego")
+selec_category(configs)
 
-print(configs)
+#Seleccionar palabras escondida de ESA categoria
+assign_hide_word(configs["categoria"], variables)
+
+#1) Generar el espacio de la palabra selecionada, debe ser una lista. ejem: ["_", "_", "_"]
+create_word_space(variables)
+
+#Test juego
+print("Si ya no desea jugar escriba (salir)")
+
+letra = ""
+while letra != "salir" and variables["vida"] != 0 and "_" in variables["espacio_palabra"] : 
+  letra = input("Ingrese una letra: ")
+  limpiar_consola()
+  
+  variables["espacio_palabra"] = revelar_palabra(variables["espacio_palabra"], variables["palabra"], letra)
+  print(" ".join(variables["espacio_palabra"]))
+  if len(indices_letra(variables["palabra"], letra)) == 0: # si el usuario se equivoca
+    variables["vida"] -= 1
+
+  print(f"\n \n Vidas restantes: {variables["vida"]}")
+  ascii_loader(variables["vida"])
 
 
-#Saludo
-def saludo():
-    print("¡Bienvenido a uno de los mejores juegos en solitario!")
-    print("Desestrésate o estrésate adivinando la palabra por tu cuenta y sin ayuda de nadie.")
-    print("Sin más preámbulos… ¡COMENCEMOS CON EL JUEGO!")
-saludo()
-
-#banco de palabras
-adivinar_palabra = ["Acuario","peces","tiburon","sirenas","orcas"]
-
-#Seleccion de la palabra escondida
-palabra = adivinar_palabra[4]
-#print(palabra)
 
 
-#crear una funcion que una vez que el usuario haya adivinado todas las letras haga terminar el bucle
-
-#verifica que la condicion de vidas este en el rango de 0-6
-while(vidas <= 6 and vidas > 0):
-    #Usuario coloca una letra y se imprime
-    letra = input("Ingrese una letra: ")
-
-    #validacion si la letra pertenece a la palabra, se le quite -1 o quede igual
-    if letra in palabra:
-        print("la letra es correcta")
-    else:
-        print("la letra es incorrecta")
-        vidas = vidas-1
 
 
 #Subir cambios
@@ -70,7 +70,7 @@ while(vidas <= 6 and vidas > 0):
 
 #Bajar cambios
 #git add .
-#git pull origin mai
+#git pull origin main
 
 
 
